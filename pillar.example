@@ -1,0 +1,12 @@
+# vi:syntax=yaml
+oauth2_proxy:
+  accesscfg: access.cfg
+  emails:
+    name: 'name@example.com'
+    anderername: 'anderername@example.com'
+  oauth2cfg:
+    new-oauth2.cfg:
+      key: value
+      key2: bla
+    new-new-oauth2.cfg:
+      key: othervalue

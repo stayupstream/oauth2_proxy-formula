@@ -1,0 +1,27 @@
+{% set oauth2_proxy = salt['grains.filter_by']({
+    'Debian': {
+        'pkg': 'oauth2_proxy',
+        'bin_dir': '/usr/local/bin',
+        'bin_file': '/usr/bin/oauth2_proxy',
+        'source_url': 'https://github.com/bitly/oauth2_proxy/releases/download',
+        'oa_version': 'v2.0.1',
+        'source_file': 'oauth2_proxy-2.0.1.linux-amd64.go1.4.2.tar.gz',
+        'source_hash': 'md5=d2700fb5529ff7259f05d02abc14416a',
+        'conf_dir': '/etc/oauth2_proxy.d',
+        'accesscfg': 'access.cfg',
+        'cfg': 'oauth2_config.cfg'
+    },
+    'RedHat': {
+        'pkg': 'oauth2_proxy',
+        'bind_dir': '/usr/bin',
+        'bin_file': '/usr/bin/oauth2_proxy',
+        'source_url': 'https://github.com/bitly/oauth2_proxy/releases/download/v2.0.1/oauth2_proxy-2.0.1.linux-amd64.go1.4.2.tar.gz',
+        'source_hash': 'md5=d2700fb5529ff7259f05d02abc14416a',
+        'conf_dir': '/etc/oauth2_proxy.d',
+        'accesscfg': 'access.cfg',
+        'cfg': 'oauth2_config.cfg'
+        },
+       
+}, grain='os_family', merge=salt['pillar.get']('oauth2_proxy')) %}
+
+
