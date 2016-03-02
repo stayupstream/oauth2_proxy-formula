@@ -35,7 +35,7 @@
          # Don't Edit
          # File is managed by Saltstack
          {% for key, value in item.items() -%}
-         {{ key }}={{ value }}
+         {{ key }} = {{ value }}
          {% endfor -%}
 {% endfor %}
 
