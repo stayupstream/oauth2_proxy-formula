@@ -21,6 +21,7 @@
          {% endfor %}
     - require:
       - file: {{ oauth2_proxy.conf_dir }}
+      - pkg: supervisor
 {% endif %}
 
 
@@ -38,4 +39,13 @@
          {{ key }} = {{ value }}
          {% endfor -%}
 {% endfor %}
+
+supervisor_restart:
+  service.running:
+    - name: supervisor
+    - watch:
+    {% for name, item in salt['pillar.get']('oauth2_proxy:oauth2cfg', {}).items() %}
+      - file: {{ oauth2_proxy.conf_dir }}/{{ name }}
+    {% endfor %}  
+
 
