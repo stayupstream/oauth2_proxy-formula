@@ -25,4 +25,4 @@ extract_oauth:
     - name: tar -zxvf {{ oauth2_proxy.source_file }} --strip=1
     - require_in:
       - pkg: oauth2_proxy
-
+    - creates: {{ oauth2_proxy.bin_file }}
