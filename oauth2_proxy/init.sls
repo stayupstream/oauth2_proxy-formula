@@ -2,13 +2,9 @@
 
 include:
   - oauth2_proxy.config
+  - supervisor.config
 
 
-oauth2_proxy_pre:
-  pkg.installed:
-    - names:
-      - supervisor
-      - golang
 
 oauth2_proxy:
   file.managed:
@@ -17,7 +13,7 @@ oauth2_proxy:
     - source_hash: {{ oauth2_proxy.source_hash}}
     - require:
       - pkg: golang
-      - pkg: supervisor
+      - file: supervisor-config
 
 extract_oauth:
   cmd.run:

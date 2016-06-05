@@ -34,7 +34,6 @@ extend:
          {% endfor %}
     - require:
       - file: {{ oauth2_proxy.conf_dir }}
-      - pkg: supervisor
 {% endif %}
 
 
