@@ -44,12 +44,11 @@ extend:
     - user: root
     - group: root
     - mode: 644
+    - require:
+      - file: {{ oauth2_proxy.conf_dir }}
     - contents: |
          # Don't Edit
          # File is managed by Saltstack
          {% for key, value in item.items() -%}
          {{ key }} = {{ value }}
-         {% endfor -%}
-    - require:
-      - file: {{ oauth2_proxy.conf_dir }}
 {% endfor %}
