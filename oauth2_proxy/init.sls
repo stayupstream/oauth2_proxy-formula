@@ -4,7 +4,9 @@ include:
   - oauth2_proxy.config
   - supervisor.conf
 
-
+golang:
+  pkg.installed:
+    - name: golang
 
 oauth2_proxy:
   file.managed:
