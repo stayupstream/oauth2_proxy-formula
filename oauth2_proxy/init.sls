@@ -2,7 +2,7 @@
 
 include:
   - oauth2_proxy.config
-  - supervisor.config
+  - supervisor.conf
 
 
 
