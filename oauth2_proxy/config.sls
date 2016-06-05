@@ -50,4 +50,6 @@ extend:
          {% for key, value in item.items() -%}
          {{ key }} = {{ value }}
          {% endfor -%}
+    - require:
+      - file: {{ oauth2_proxy.conf_dir }}
 {% endfor %}
