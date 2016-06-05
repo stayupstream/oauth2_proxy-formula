@@ -21,4 +21,4 @@ Available states
 
 installs and configures oauth2_proxy from github
 
-
+requires formula supervisor to start the oauth_service

@@ -1,11 +1,24 @@
 {% from "oauth2_proxy/map.jinja" import oauth2_proxy with context %}
 
+include:
+  - supervisor.service
+
+
+extend:
+  supervisor-service:
+    service:
+      - watch:
+      {% for name, item in salt['pillar.get']('oauth2_proxy:oauth2cfg', {}).items() %}
+        - file: {{ oauth2_proxy.conf_dir }}/{{ name }}
+      {% endfor %}
+
+
 {{ oauth2_proxy.conf_dir }}:
   file.directory:
   - user: root
   - group: root
   - dir_mode: 755
-  
+
 
 {% if oauth2_proxy.accesscfg %}
 {{ oauth2_proxy.conf_dir }}/{{ oauth2_proxy.accesscfg }}:
@@ -39,13 +52,3 @@
          {{ key }} = {{ value }}
          {% endfor -%}
 {% endfor %}
-
-supervisor_restart:
-  service.running:
-    - name: supervisor
-    - watch:
-    {% for name, item in salt['pillar.get']('oauth2_proxy:oauth2cfg', {}).items() %}
-      - file: {{ oauth2_proxy.conf_dir }}/{{ name }}
-    {% endfor %}  
-
-
