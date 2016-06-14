@@ -18,6 +18,8 @@ extend:
         - file: {{ oauth2_proxy.conf_dir }}/{{ name }}
       {% for name, item in salt['pillar.get']('oauth2_proxy:emails', {}).items() %}
         - file: {{ oauth2_proxy.conf_dir }}/{{ name }}
+      {% endfor %}
+
 
 {{ oauth2_proxy.conf_dir }}:
   file.directory:
