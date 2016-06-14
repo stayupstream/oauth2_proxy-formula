@@ -44,6 +44,8 @@ extend:
          {% endfor %}
     - require:
       - file: {{ oauth2_proxy.conf_dir }}
+    - require_in:
+      - cmd: extract_oauth
 {% endif %}
 
 
@@ -56,6 +58,8 @@ extend:
     - mode: 644
     - require:
       - file: {{ oauth2_proxy.conf_dir }}
+    - require_in:
+      - cmd: extract_oauth
     - contents: |
          # Don't Edit
          # File is managed by Saltstack
