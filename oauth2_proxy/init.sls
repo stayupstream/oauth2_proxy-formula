@@ -9,7 +9,7 @@ extend:
   supervisor-service:
     service:
       - watch:
-        - file: oauth2_proxy
+        - cmd: extract_oauth
 
 
 golang:
