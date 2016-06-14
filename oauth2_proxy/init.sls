@@ -3,6 +3,14 @@
 include:
   - oauth2_proxy.config
   - supervisor.conf
+  - supervisor.service
+
+extend:
+  supervisor-service:
+    service:
+      - watch:
+        - file: oauth2_proxy
+
 
 golang:
   pkg.installed:
