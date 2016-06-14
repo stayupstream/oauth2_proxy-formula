@@ -10,8 +10,14 @@ extend:
       - watch:
       {% for name, item in salt['pillar.get']('oauth2_proxy:oauth2cfg', {}).items() %}
         - file: {{ oauth2_proxy.conf_dir }}/{{ name }}
+      {% for name, item in salt['pillar.get']('oauth2_proxy:emails', {}).items() %}
+        - file: {{ oauth2_proxy.conf_dir }}/{{ name }}
       {% endfor %}
-
+      - require:
+      {% for name, item in salt['pillar.get']('oauth2_proxy:oauth2cfg', {}).items() %}
+        - file: {{ oauth2_proxy.conf_dir }}/{{ name }}
+      {% for name, item in salt['pillar.get']('oauth2_proxy:emails', {}).items() %}
+        - file: {{ oauth2_proxy.conf_dir }}/{{ name }}
 
 {{ oauth2_proxy.conf_dir }}:
   file.directory:
