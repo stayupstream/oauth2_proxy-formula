@@ -33,3 +33,10 @@ extract_oauth:
       - pkg: oauth2_proxy
       - service: supervisor
     - creates: {{ oauth2_proxy.bin_file }}
+
+{% for name, item in salt['pillar.get']('oauth2_proxy:oauth2cfg', {}).items() %}
+reload_supervisor-{{ name }}:
+  cmd.run:
+    - name:  supervisorctl restart oauth2_proxy_{{ name }}
+    - onlyif: supervisorctl status | grep FATAL
+{% endfor %}
