@@ -52,7 +52,7 @@ extend:
 {% for name, item in salt['pillar.get']('oauth2_proxy:oauth2cfg', {}).items() %}
 {{ name }}:
   file.managed:
-    - name: {{ oauth2_proxy.conf_dir }}/{{ name }}
+    - name: {{ oauth2_proxy.conf_dir }}/{{ name }}.cfg
     - user: root
     - group: root
     - mode: 644
