@@ -9,14 +9,14 @@ extend:
     service:
       - watch:
         {% for name, item in salt['pillar.get']('oauth2_proxy:oauth2cfg', {}).items() %}
-        - file: {{ oauth2_proxy.conf_dir }}/{{ name }}
+        - file: {{ oauth2_proxy.conf_dir }}/{{ name }}.cfg
         {% endfor %}
         {% if oauth2_proxy.accesscfg %}
         - file: {{ oauth2_proxy.conf_dir }}/{{ oauth2_proxy.accesscfg }}
         {% endif %}
       - require:
         {% for name, item in salt['pillar.get']('oauth2_proxy:oauth2cfg', {}).items() %}
-        - file: {{ oauth2_proxy.conf_dir }}/{{ name }}
+        - file: {{ oauth2_proxy.conf_dir }}/{{ name }}.cfg
         {% endfor %}
         {% if oauth2_proxy.accesscfg %}
         - file: {{ oauth2_proxy.conf_dir }}/{{ oauth2_proxy.accesscfg }}
