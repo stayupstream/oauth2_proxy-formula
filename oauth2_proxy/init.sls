@@ -33,6 +33,9 @@ extract_oauth:
       - pkg: oauth2_proxy
       - service: supervisor
     - creates: {{ oauth2_proxy.bin_file }}
+    - require: 
+      - file: oauth2_proxy
+
 
 {% for name, item in salt['pillar.get']('oauth2_proxy:oauth2cfg', {}).items() %}
 reload_supervisor-{{ name }}:
