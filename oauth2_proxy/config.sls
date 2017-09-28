@@ -1,4 +1,4 @@
-{% from "oauth2_proxy/map.jinja" import oauth2_proxy with context %}
+#{% from "oauth2_proxy/map.jinja" import oauth2_proxy with context %}
 
 oauth2_proxy_pip:
   pkg.installed:
@@ -26,3 +26,19 @@ oauth2_proxy-config:
       - pip: {{ oauth2_proxy.toml_module }}
     - require:
       - user: oauth2
+
+{% if oauth2_proxy.config.authenticated_emails_file %}
+oauth2_proxy-emails-config:
+  file.managed:
+    - name: /etc/oauth2_proxy/{{ oauth2_proxy.config.authenticated_emails_file }}
+    - user: oauth2
+    - group: oauth2
+    - contents: |
+        # Don't Edit
+        # File is managed by Saltstack
+        {% for names, email in salt['pillar.get']('oauth2_proxy:emails', {}).items() -%}
+        {{ email }}
+        {% endfor %}
+
+{% endif %}
+

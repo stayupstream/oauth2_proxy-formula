@@ -10,9 +10,11 @@ oauth2_proxy:
 
   tmpl_config: 'salt://oauth2_proxy/files/oauth2_proxy.config.jinja'
 
+  emails: []
+
   config:
-    accesscfg: 'access.cfg'
-    cfg: 'oauth2_config.cfg'
+    authenticated_emails_file: 'emails.file'
+
 
   register: []
   scripts: []

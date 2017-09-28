@@ -1,12 +1,23 @@
 # vi:syntax=yaml
 oauth2_proxy:
-  accesscfg: access.cfg
+  version: "v2.2"
+  download_url: "https://github.com/bitly/oauth2_proxy/releases/download/"
+  download_file: "oauth2_proxy-2.2.0.linux-amd64.go1.8.1"
+  download_hash: "sha1=1c73bc38141e079441875e5ea5e1a1d6054b4f3b"
+  service: false
+
+  pip_pkg: 'python-pip'
+  toml_module: 'toml'
+
+  tmpl_config: 'salt://oauth2_proxy/files/oauth2_proxy.config.jinja'
+
   emails:
     name: 'name@example.com'
     anderername: 'anderername@example.com'
-  oauth2cfg:
-    new-oauth2.cfg:
-      key: value
-      key2: bla
-    new-new-oauth2.cfg:
-      key: othervalue
+
+  config:
+    cookie_secret: "CVWax2G5krP_s_zL6SD6-g=="
+
+  register: []
+  scripts: []
+
