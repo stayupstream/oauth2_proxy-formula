@@ -1,4 +1,4 @@
-{%- from slspath+"/map.jinja" import oauth2_proxy with context -%}
+{% from "oauth2_proxy/map.jinja" import oauth2_proxy with context %}
 
 oauth2_proxy-init-file:
   file.managed:

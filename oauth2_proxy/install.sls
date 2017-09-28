@@ -1,4 +1,4 @@
-{% from slspath+"/map.jinja" import oauth2_proxy with context %}
+{% from "oauth2_proxy/map.jinja" import oauth2_proxy with context %}
 
 oauth2_proxy-bin-dir:
   file.directory:
@@ -21,7 +21,7 @@ oauth2_proxy-user:
 # Create config directory
 oauth2_proxy-config-dir:
   file.directory:
-    - name: /etc/oauth2_proxy.d
+    - name: /etc/oauth2_proxy
     - user: oauth2
     - group: oauth2
 

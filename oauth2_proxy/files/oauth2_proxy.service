@@ -6,7 +6,7 @@ After=syslog.target network.target
 User=oauth2
 Group=oauth2
 
-ExecStart=/usr/local/bin/oauth2_proxy -config=/etc/oauth2_proxy.cfg
+ExecStart=/usr/local/bin/oauth2_proxy -config=/etc/oauth2_proxy/oauth2_proxy.cfg
 ExecReload=/bin/kill -HUP $MAINPID
 
 KillMode=process

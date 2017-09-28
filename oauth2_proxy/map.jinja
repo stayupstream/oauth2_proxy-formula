@@ -1,4 +1,4 @@
-{% import_yaml slspath+"/defaults.yaml" as defaults %}
+{% import_yaml "oauth2_proxy/defaults.yaml" as defaults %}
 
 {% set oauth2_proxy = salt['pillar.get']('oauth2_proxy', default=defaults.oauth2_proxy, merge=True) %}
 

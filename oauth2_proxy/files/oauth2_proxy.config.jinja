@@ -1,0 +1,10 @@
+{% from "oauth2_proxy/map.jinja" import oauth2_proxy with context %}
+
+#
+# DO NOT EDIT
+#
+# This file is managed by salt via {{ source }}
+# Modify the config that generates this file instead
+#
+
+{{ salt['toml_lang.dumps'](oauth2_proxy.config) }}

@@ -5,10 +5,12 @@ oauth2_proxy:
   download_hash: "sha1=1c73bc38141e079441875e5ea5e1a1d6054b4f3b"
   service: false
 
+  pip_pkg: 'python-pip'
+  toml_module: 'toml'
+
+  tmpl_config: 'salt://oauth2_proxy/files/oauth2_proxy.config.jinja'
+
   config:
-    bin_dir: '/usr/local/bin'
-    bin_file: '/usr/local/bin/oauth2_proxy'
-    conf_dir: '/etc/oauth2_proxy.d'
     accesscfg: 'access.cfg'
     cfg: 'oauth2_config.cfg'
 
