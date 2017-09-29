@@ -13,7 +13,7 @@ oauth2_proxy:
   emails: []
 
   config:
-    authenticated_emails_file: 'emails.file'
+    authenticated_emails_file: '/etc/oauth2_proxy/emails_file'
 
 
   register: []

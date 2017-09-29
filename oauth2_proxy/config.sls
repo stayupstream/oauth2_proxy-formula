@@ -30,7 +30,7 @@ oauth2_proxy-config:
 {% if oauth2_proxy.config.authenticated_emails_file %}
 oauth2_proxy-emails-config:
   file.managed:
-    - name: /etc/oauth2_proxy/{{ oauth2_proxy.config.authenticated_emails_file }}
+    - name: /etc/oauth2_proxy/emails_file
     - user: oauth2
     - group: oauth2
     - contents: |
